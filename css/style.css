@@ -50,14 +50,12 @@ h1 {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.column:before {
-    content: "";
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    line-height: 0
-    font-size: 5em;
-}
-.column-x:before {
+.column-pred {
   content: url(../img/predator2.gif);
+  background-size: cover;
+}
+
+.column-alien {
+  content: url(../img/bg_alien.gif);
+  background-size: cover;
 }
