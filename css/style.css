@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Chewy);
 
+
 body {
   /*background: url('https://images6.alphacoders.com/323/323187.jpg');*/
   background-position: center;
@@ -39,4 +40,16 @@ h1 {
     margin: 0 auto;
     color: white;
     box-shadow: 7px 7px black;
+}
+
+.column:before {
+    content: "";
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 0;
+    font-size: 5em;
+}
+.column-x:before {
+  content: 'X';
 }
