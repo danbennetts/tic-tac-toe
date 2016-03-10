@@ -63,12 +63,16 @@ $(document).ready(function() {
       var matches = []
 
       for (var j = 0; j < combo.length; j++) {
-        var present = playerMoves.indexOf(combo[i]) > -1; // will return true/false, i.e. it is in the array or not
+        var present = playerMoves.indexOf(combo[j]) > -1; // will return true/false, i.e. it is in the array or not
         matches.push(present)
       }
 
       if (matches.indexOf(false) === -1) {
-        swal('You have won!')
+        swal({
+          title: currentPlayer + ' Wins!',
+          text: "Click Fight Again! to play another game.",
+          imageUrl: "img/trophy-512.gif"
+        });
         console.log(matches[i]);
       } // then here you can check to see if the matches array has 3 'true's in it
     }
