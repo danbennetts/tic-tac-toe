@@ -5,18 +5,18 @@ $(document).ready(function() {
   //We need to find out possible combinations in all directions. Possibly an array or object?
 
   var possibleCombos = [
-      //Horizontal Combo
-      ['column1', 'column2', 'column3'],
-      ['column4', 'column5', 'column6'],
-      ['column7', 'column8', 'column9'],
-      //Vertical Combo
-      ['column1', 'column4', 'column7'],
-      ['column2', 'column5', 'column8'],
-      ['column3', 'column6', 'column9'],
-      //Diagonal Combo
-      ['column1', 'column5', 'column9'],
-      ['column3', 'column5', 'column7']
-    ];
+    //Horizontal Combo
+    ['column1', 'column2', 'column3'],
+    ['column4', 'column5', 'column6'],
+    ['column7', 'column8', 'column9'],
+    //Vertical Combo
+    ['column1', 'column4', 'column7'],
+    ['column2', 'column5', 'column8'],
+    ['column3', 'column6', 'column9'],
+    //Diagonal Combo
+    ['column1', 'column5', 'column9'],
+    ['column3', 'column5', 'column7']
+  ];
   // var possibleCombos = [
   //   //Horizontal Combo
   //   [0, 1, 2],
@@ -42,7 +42,7 @@ $(document).ready(function() {
   };
 
 
-//We need to store both players information so that it is accessible.
+  //We need to store both players information so that it is accessible.
   var currentPlayer = 'Predator';
   var tries = 0;
   // Check if the event listener works when you click on a column
@@ -53,50 +53,52 @@ $(document).ready(function() {
     $column.addClass('column-' + currentPlayer);
 
 
-    var columnIndex = $('.game-board .column').index($column);
-     var currentPlayerColumn = playersChosenMoves[currentPlayer]
-     currentPlayerColumn.push(columnIndex);
-     console.log(playersChosenMoves);
+    var location = $column.attr('id')
+    playersChosenMoves[currentPlayer].push(location)
 
 
-     for (var i = 0; i < possibleCombos.length; i++) {
-       var combo = possibleCombos[i]
-       var playerMoves = playersChosenMoves['Predator']
-       var matches = []
+    for (var i = 0; i < possibleCombos.length; i++) {
+      var combo = possibleCombos[i]
+      var playerMoves = playersChosenMoves['Predator']
+      var matches = []
 
-       for (var j = 0; j < combo.length; j++) {
-         var present = playerMoves.indexOf(combo[i]) > -1; // will return true/false, i.e. it is in the array or not
-         matches.push(present)
-       }
+      for (var j = 0; j < combo.length; j++) {
+        var present = playerMoves.indexOf(combo[i]) > -1; // will return true/false, i.e. it is in the array or not
+        matches.push(present)
+      }
 
-       if (matches.indexOf(false) === -1) {
-         alert('You have won!')
-         console.log(matches[i]);
-       }// then here you can check to see if the matches array has 3 'true's in it
-     }
-
+      if (matches.indexOf(false) === -1) {
+        swal('You have won!')
+        console.log(matches[i]);
+      } // then here you can check to see if the matches array has 3 'true's in it
+    }
 
 
 
 
 
-    //  $.each(possibleCombos, function(index, combination) {
-    //     //Check to see if the player has all of the squares first
-    //     var hasAllColumns = true;
-     //
     //
-    //     $.each(combination, function(index, column) {
-    //       // If the player's chosen squares does not contain the current square
-    //       if ($.inArray(column, currentPlayerColumn) === -1) {
-    //         hasAllColumns = false;
-    //       }
-    //     });
-     //
-    //     // Display the winner
-    //     if (hasAllColumns) {
-    //       swal({   title: currentPlayer + ' Wins!',   text: "Click Fight Again! to play another game.",   imageUrl: "img/trophy-512.gif" });;
+    // $.each(possibleCombos, function(index, combination) {
+    //   //Check to see if the player has all of the squares first
+    //   var hasAllColumns = true;
+    //
+    //
+    //   $.each(combination, function(index, column) {
+    //     // If the player's chosen squares does not contain the current square
+    //     if ($.inArray(column, currentPlayerColumn) === -1) {
+    //       hasAllColumns = false;
     //     }
     //   });
+    //
+    //   // Display the winner
+    //   if (hasAllColumns) {
+    //     swal({
+    //       title: currentPlayer + ' Wins!',
+    //       text: "Click Fight Again! to play another game.",
+    //       imageUrl: "img/trophy-512.gif"
+    //     });;
+    //   }
+    // });
 
     //We need to be able to swap players, a conditional maybe?
     if (currentPlayer === 'Predator') {
@@ -106,9 +108,9 @@ $(document).ready(function() {
     }
   });
 
-  $('button').on('click', function () {
-      $("div").removeClass("column-Predator");
-      $("div").removeClass("column-Alien");
+  $('button').on('click', function() {
+    $("div").removeClass("column-Predator");
+    $("div").removeClass("column-Alien");
   });
 
 });
