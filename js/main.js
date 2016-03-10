@@ -45,8 +45,11 @@ $(document).ready(function() {
   //We need to store both players information so that it is accessible.
   var currentPlayer = 'Predator';
   var tries = 0;
+  var gameOver = false;
   // Check if the event listener works when you click on a column
   $('.game-board').on('click', ".column:not('.column-Predator, .column-Alien')", function(event) {
+    tries += 1;
+    console.log(tries)
     //Create a variable that can store the current event handler.
     //Have prefixed it with $ so I can identify it later.
     var $column = $(event.currentTarget);
@@ -68,43 +71,17 @@ $(document).ready(function() {
       }
 
       if (matches.indexOf(false) === -1) {
+        gameOver = true;
         swal({
           title: currentPlayer + ' Wins!',
           text: "Click Fight Again! to play another game.",
           imageUrl: "img/trophy-512.gif"
         });
-        console.log(matches[i]);
-      } // then here you can check to see if the matches array has 3 'true's in it
+      }
+      if ((tries === 9) && (gameOver === false)) {
+        swal('Draw!');
+      }
     }
-
-
-
-
-
-    //
-    // $.each(possibleCombos, function(index, combination) {
-    //   //Check to see if the player has all of the squares first
-    //   var hasAllColumns = true;
-    //
-    //
-    //   $.each(combination, function(index, column) {
-    //     // If the player's chosen squares does not contain the current square
-    //     if ($.inArray(column, currentPlayerColumn) === -1) {
-    //       hasAllColumns = false;
-    //     }
-    //   });
-    //
-    //   // Display the winner
-    //   if (hasAllColumns) {
-    //     swal({
-    //       title: currentPlayer + ' Wins!',
-    //       text: "Click Fight Again! to play another game.",
-    //       imageUrl: "img/trophy-512.gif"
-    //     });;
-    //   }
-    // });
-
-    //We need to be able to swap players, a conditional maybe?
     if (currentPlayer === 'Predator') {
       currentPlayer = 'Alien';
     } else {
@@ -119,6 +96,8 @@ $(document).ready(function() {
      'Predator': [],
      'Alien': []
    };
+   tries = 0;
+   gameOver = false;
   });
 
 });
