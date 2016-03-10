@@ -59,7 +59,7 @@ $(document).ready(function() {
 
     for (var i = 0; i < possibleCombos.length; i++) {
       var combo = possibleCombos[i]
-      var playerMoves = playersChosenMoves['Predator']
+      var playerMoves = playersChosenMoves[currentPlayer]
       var matches = []
 
       for (var j = 0; j < combo.length; j++) {
@@ -115,6 +115,10 @@ $(document).ready(function() {
   $('button').on('click', function() {
     $("div").removeClass("column-Predator");
     $("div").removeClass("column-Alien");
+    playersChosenMoves = {
+     'Predator': [],
+     'Alien': []
+   };
   });
 
 });
