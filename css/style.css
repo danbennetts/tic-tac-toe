@@ -50,12 +50,21 @@ h1 {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.column-pred {
+.column-Predator {
   content: url(../img/predator2.gif);
   background-size: cover;
 }
 
-.column-alien {
+.column-Alien {
   content: url(../img/bg_alien.gif);
   background-size: cover;
+}
+
+button {
+  font-family: 'Chewy',sans-serif;
+  background-color: grey;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
