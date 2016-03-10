@@ -50,8 +50,8 @@ $(document).ready(function() {
   $('.game-board').on('click', ".column:not('.column-Predator, .column-Alien')", function(event) {
     tries += 1;
     console.log(tries)
-    //Create a variable that can store the current event handler.
-    //Have prefixed it with $ so I can identify it later.
+      //Create a variable that can store the current event handler.
+      //Have prefixed it with $ so I can identify it later.
     var $column = $(event.currentTarget);
     $column.addClass('column-' + currentPlayer);
 
@@ -93,11 +93,11 @@ $(document).ready(function() {
     $("div").removeClass("column-Predator");
     $("div").removeClass("column-Alien");
     playersChosenMoves = {
-     'Predator': [],
-     'Alien': []
-   };
-   tries = 0;
-   gameOver = false;
+      'Predator': [],
+      'Alien': []
+    };
+    tries = 0;
+    gameOver = false;
   });
 
 });
